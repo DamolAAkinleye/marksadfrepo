@@ -1,0 +1,40 @@
+{
+	"name": "Load Multiple Tables",
+	"properties": {
+		"description": "Use a flexible SQL loading data flow to load many tables in a single activity",
+		"activities": [
+			{
+				"name": "flexible SQL",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "dataflowFlexibleSQL",
+						"type": "DataFlowReference",
+						"parameters": {
+							"filename": "'moviesDB.csv'"
+						},
+						"datasetParameters": {
+							"sinkParams": {
+								"mytablename": "MoviesWithRatings"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 32,
+						"computeType": "MemoryOptimized"
+					}
+				}
+			}
+		],
+		"annotations": []
+	}
+}

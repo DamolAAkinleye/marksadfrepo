@@ -5,13 +5,9 @@
 			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference"
 		},
+		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
-			{
-				"name": "movie",
-				"type": "int",
-				"precision": 10
-			},
 			{
 				"name": "title",
 				"type": "nvarchar"
@@ -34,6 +30,10 @@
 				"name": "Rotton Tomato",
 				"type": "int",
 				"precision": 10
+			},
+			{
+				"name": "title_by_genre",
+				"type": "nvarchar"
 			}
 		],
 		"typeProperties": {

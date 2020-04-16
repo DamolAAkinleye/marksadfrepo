@@ -1,0 +1,19 @@
+{
+	"name": "jsonOrders",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "orders.json",
+				"folderPath": "SampleData/json",
+				"container": "mycontainer"
+			}
+		}
+	}
+}

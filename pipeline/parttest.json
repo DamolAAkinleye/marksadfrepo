@@ -16,8 +16,15 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "partdata",
+						"referenceName": "SQLPerf3",
 						"type": "DataFlowReference"
+					},
+					"staging": {
+						"folderPath": "mycontainer/staging"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
 					}
 				}
 			}

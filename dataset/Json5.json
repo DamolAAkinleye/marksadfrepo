@@ -1,0 +1,47 @@
+{
+	"name": "Json5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "redacted_sample.json",
+				"folderPath": "SampleData/json",
+				"container": "mycontainer"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"Animal": {
+					"type": "string"
+				},
+				"Colour": {
+					"type": "string"
+				},
+				"Age": {
+					"type": "integer"
+				},
+				"Visits": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Reason": {
+								"type": "string"
+							},
+							"Date": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
