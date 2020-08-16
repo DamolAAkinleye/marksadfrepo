@@ -1,0 +1,66 @@
+{
+	"name": "metadatapipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "metadataChecker",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "metadataChecker",
+						"type": "DataFlowReference",
+						"parameters": {
+							"filename": "'SampleData/moviesDB.csv'",
+							"columns": "'movie,title'"
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "metadataChecker",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "metacheck",
+					"value": {
+						"value": "@string(activity('metadataChecker').output.runStatus.metrics.sink1.rowsWritten)",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"filename": {
+				"type": "string",
+				"defaultValue": "'SampleData/moviesDB.csv'"
+			}
+		},
+		"variables": {
+			"metacheck": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
